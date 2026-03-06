@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daley & Paulk LLC — Institutional Signals. Exceptional Returns.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --gold:    #b8975a;
+      --gold2:   #d4b06e;
+      --gold-dim:rgba(184,151,90,0.12);
+      --bg:      #07090d;
+      --bg2:     #0c0f15;
+      --bg3:     #111520;
+      --card:    #0e1118;
+      --text:    #e8e4da;
+      --muted:   rgba(232,228,218,0.5);
+      --dim:     rgba(232,228,218,0.1);
+      --border:  rgba(232,228,218,0.07);
+      --gold-border: rgba(184,151,90,0.2);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    /* Fine grid texture */
+    body::before {
+      content: '';
+      position: fixed; inset: 0; pointer-events: none; z-index: 0;
+      background-image:
+        linear-gradient(rgba(184,151,90,0.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(184,151,90,0.018) 1px, transparent 1px);
+      background-size: 80px 80px;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 24px 64px;
+      transition: background .35s, padding .3s, border-color .35s;
+      border-bottom: 1px solid transparent;
+    }
+    nav.scrolled {
+      background: rgba(7,9,13,.97);
+      border-bottom-color: var(--border);
+      padding: 16px 64px;
+      backdrop-filter: blur(12px);
+    }
+    .nav-logo {
+      display: flex; flex-direction: column; gap: 1px; text-decoration: none;
+    }
+    .nav-logo-main {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.2rem; letter-spacing: .04em; color: var(--text);
+    }
+    .nav-logo-sub {
+      font-size: .52rem; letter-spacing: .35em; text-transform: uppercase;
+      color: var(--gold); font-weight: 500;
+    }
+    .nav-links { display: flex; gap: 40px; list-style: none; }
+    .nav-links a {
+      font-size: .78rem; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--muted); text-decoration: none; transition: color .25s;
+      font-weight: 400;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-contact {
+      font-size: .72rem; letter-spacing: .1em; text-transform: uppercase;
+      font-weight: 500; color: var(--bg); background: var(--gold);
+      padding: 10px 22px; text-decoration: none; transition: background .2s;
+    }
+    .nav-contact:hover { background: var(--gold2); }
+
+    /* ─── HERO ─── */
+    #hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 0 64px 100px;
+      position: relative; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 80% 40%, rgba(184,151,90,0.07) 0%, transparent 55%),
+        radial-gradient(ellipse 40% 60% at 10% 80%, rgba(184,151,90,0.04) 0%, transparent 50%),
+        linear-gradient(180deg, #07090d 0%, #0b0d14 100%);
+    }
+    /* Vertical lines — market chart feel */
+    .hero-lines {
+      position: absolute; inset: 0; pointer-events: none;
+      display: flex; gap: 0; overflow: hidden;
+    }
+    .hero-line {
+      flex: 1; border-right: 1px solid rgba(184,151,90,0.04);
+    }
+    /* Faint chart path */
+    .hero-chart {
+      position: absolute; bottom: 0; left: 0; right: 0; height: 60%;
+      pointer-events: none;
+    }
+
+    .hero-eyebrow {
+      font-size: .65rem; letter-spacing: .35em; text-transform: uppercase;
+      color: var(--gold); font-weight: 500; margin-bottom: 28px;
+      position: relative; z-index: 2;
+      display: flex; align-items: center; gap: 14px;
+      opacity: 0; animation: fadeUp .6s .2s forwards;
+    }
+    .hero-eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--gold); }
+
+    h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(3.5rem, 7vw, 8rem);
+      font-weight: 400; line-height: .95; letter-spacing: -.01em;
+      position: relative; z-index: 2;
+      opacity: 0; animation: fadeUp .85s .35s forwards;
+    }
+    h1 em { font-style: italic; color: var(--gold); }
+    h1 .ghost {
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(232,228,218,0.15);
+    }
+
+    .hero-tagline {
+      font-size: clamp(1rem, 1.8vw, 1.3rem); color: var(--muted);
+      max-width: 560px; line-height: 1.75; margin-top: 32px;
+      position: relative; z-index: 2;
+      opacity: 0; animation: fadeUp .7s .65s forwards;
+    }
+
+    .hero-bottom {
+      display: flex; align-items: flex-end; justify-content: space-between;
+      margin-top: 56px; position: relative; z-index: 2;
+      opacity: 0; animation: fadeUp .7s .85s forwards;
+    }
+    .hero-actions { display: flex; gap: 14px; }
+    .btn-gold {
+      font-weight: 600; font-size: .78rem; letter-spacing: .12em; text-transform: uppercase;
+      background: var(--gold); color: var(--bg);
+      padding: 15px 36px; text-decoration: none; transition: background .2s, transform .2s;
+    }
+    .btn-gold:hover { background: var(--gold2); transform: translateY(-2px); }
+    .btn-outline {
+      font-weight: 500; font-size: .78rem; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--text); border: 1px solid var(--border);
+      padding: 15px 36px; text-decoration: none; transition: border-color .2s, color .2s;
+    }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+    .hero-metrics { display: flex; gap: 44px; }
+    .hm {
+      display: flex; flex-direction: column; gap: 4px; border-left: 1px solid var(--gold-border);
+      padding-left: 20px;
+    }
+    .hm-num {
+      font-family: 'DM Serif Display', serif; font-size: 1.8rem;
+      color: var(--gold); line-height: 1;
+    }
+    .hm-label { font-size: .65rem; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); }
+
+    /* ─── TICKER ─── */
+    .ticker {
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      background: var(--bg2); overflow: hidden; padding: 12px 0; position: relative; z-index: 2;
+    }
+    .ticker-track {
+      display: inline-flex; gap: 0;
+      animation: tickRun 28s linear infinite; white-space: nowrap;
+    }
+    .ti {
+      display: inline-block; padding: 0 32px;
+      font-size: .68rem; letter-spacing: .18em; text-transform: uppercase;
+      font-family: 'DM Serif Display', serif;
+    }
+    .ti.up { color: #22c55e; }
+    .ti.dn { color: #ef4444; }
+    .ti.sym { color: var(--gold); }
+    .ti.sep { color: var(--dim); }
+    @keyframes tickRun { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* ─── SHARED ─── */
+    .label {
+      font-size: .6rem; letter-spacing: .35em; text-transform: uppercase;
+      color: var(--gold); font-weight: 500; margin-bottom: 14px; display: block;
+    }
+    .section-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 4vw, 3.8rem);
+      font-weight: 400; line-height: 1.05; margin-bottom: 20px;
+    }
+    .section-title em { font-style: italic; color: var(--gold); }
+    .gold-rule { width: 44px; height: 1px; background: var(--gold); margin-bottom: 24px; }
+    .body-copy { font-size: .95rem; line-height: 1.85; color: var(--muted); }
+
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity .75s ease, transform .75s ease; }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+
+    /* ─── ABOUT ─── */
+    #about {
+      padding: 120px 64px; position: relative; z-index: 1;
+      max-width: 1400px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center;
+    }
+    .about-text .body-copy + .body-copy { margin-top: 14px; }
+
+    .about-pillars { display: flex; flex-direction: column; gap: 0; margin-top: 40px; }
+    .pillar {
+      padding: 22px 0; border-bottom: 1px solid var(--border);
+      display: grid; grid-template-columns: 28px 1fr; gap: 18px;
+      transition: padding-left .25s;
+    }
+    .pillar:hover { padding-left: 8px; }
+    .pillar-num { font-family: 'DM Serif Display', serif; font-size: .8rem; color: var(--gold); padding-top: 2px; }
+    .pillar-title { font-weight: 600; font-size: .9rem; margin-bottom: 4px; }
+    .pillar-desc { font-size: .82rem; color: var(--muted); line-height: 1.7; }
+
+    /* decorative quote block */
+    .about-quote {
+      background: var(--card); border: 1px solid var(--gold-border);
+      padding: 52px 48px; position: relative;
+    }
+    .about-quote::before {
+      content: '"';
+      position: absolute; top: -20px; left: 40px;
+      font-family: 'DM Serif Display', serif; font-size: 8rem;
+      color: var(--gold); line-height: 1; opacity: .15;
+    }
+    .quote-text {
+      font-family: 'DM Serif Display', serif; font-style: italic;
+      font-size: clamp(1.2rem, 2vw, 1.6rem); line-height: 1.5;
+      color: var(--text); margin-bottom: 28px;
+    }
+    .quote-attr { font-size: .72rem; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); font-weight: 500; }
+
+    /* ─── PRODUCTS ─── */
+    #products {
+      padding: 120px 64px; background: var(--bg2); position: relative; z-index: 1;
+    }
+    .products-head { max-width: 1400px; margin: 0 auto 64px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: end; }
+    .products-note { font-size: .95rem; color: var(--muted); line-height: 1.8; }
+
+    .products-grid {
+      max-width: 1400px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px;
+    }
+    .prod-card {
+      background: var(--card); border: 1px solid var(--border);
+      padding: 52px 48px; position: relative; overflow: hidden;
+      transition: border-color .35s, background .35s;
+    }
+    .prod-card:hover { border-color: var(--gold-border); background: var(--bg3); }
+    .prod-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; bottom: 0; width: 2px;
+      background: var(--gold);
+      transform: scaleY(0); transform-origin: top;
+      transition: transform .4s ease;
+    }
+    .prod-card:hover::before { transform: scaleY(1); }
+
+    .prod-number {
+      font-family: 'DM Serif Display', serif; font-size: .75rem;
+      color: var(--gold); letter-spacing: .1em; margin-bottom: 20px; display: block;
+    }
+    .prod-name {
+      font-family: 'DM Serif Display', serif; font-size: 1.7rem;
+      line-height: 1.15; margin-bottom: 18px;
+    }
+    .prod-desc { font-size: .88rem; color: var(--muted); line-height: 1.8; margin-bottom: 28px; }
+    .prod-link {
+      font-size: .7rem; letter-spacing: .2em; text-transform: uppercase;
+      font-weight: 600; color: var(--gold); text-decoration: none;
+      display: flex; align-items: center; gap: 10px;
+      transition: gap .2s;
+    }
+    .prod-link::after { content: '→'; }
+    .prod-link:hover { gap: 16px; }
+    .prod-tag {
+      position: absolute; top: 52px; right: 48px;
+      font-size: .5rem; letter-spacing: .2em; text-transform: uppercase;
+      padding: 4px 10px; border: 1px solid var(--gold-border); color: var(--gold);
+    }
+
+    /* ─── SUPERCYCLE ─── */
+    #supercycle {
+      padding: 120px 64px; position: relative; z-index: 1;
+      max-width: 1400px; margin: 0 auto;
+    }
+    .super-intro {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 100px;
+      margin-bottom: 80px; align-items: end;
+    }
+    .super-intro-right { font-size: .95rem; color: var(--muted); line-height: 1.85; }
+    .super-intro-right strong { color: var(--text); font-weight: 500; }
+
+    /* Data Points */
+    .data-points {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px;
+      margin-bottom: 80px;
+    }
+    .dp-card {
+      background: var(--card); border: 1px solid var(--border);
+      padding: 36px 40px; transition: border-color .3s;
+    }
+    .dp-card:hover { border-color: var(--gold-border); }
+    .dp-icon { font-size: 1.6rem; margin-bottom: 16px; display: block; }
+    .dp-title { font-weight: 600; font-size: .92rem; margin-bottom: 8px; }
+    .dp-body { font-size: .82rem; color: var(--muted); line-height: 1.75; }
+
+    /* Investment Sectors */
+    .sectors-title {
+      font-family: 'DM Serif Display', serif; font-size: 1.4rem;
+      margin-bottom: 32px; margin-top: 80px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .sectors-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+    .sectors-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; }
+    .sector-card {
+      background: var(--card); border: 1px solid var(--border);
+      padding: 36px 32px; transition: border-color .3s, background .3s;
+    }
+    .sector-card:hover { border-color: var(--gold-border); background: var(--bg3); }
+    .sector-name {
+      font-family: 'DM Serif Display', serif; font-size: 1.2rem;
+      margin-bottom: 16px; color: var(--gold);
+    }
+    .sector-bullets { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+    .sector-bullet {
+      font-size: .78rem; color: var(--muted); line-height: 1.6;
+      padding-left: 14px; position: relative;
+    }
+    .sector-bullet::before {
+      content: '—'; position: absolute; left: 0; color: var(--gold); font-size: .7rem;
+    }
+
+    /* Thesis conclusion */
+    .thesis-close {
+      background: var(--bg3); border: 1px solid var(--gold-border);
+      padding: 64px; margin-top: 2px; position: relative; overflow: hidden;
+    }
+    .thesis-close::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+    .tc-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 48px; align-items: center; }
+    .tc-why { }
+    .tc-why-title { font-family: 'DM Serif Display', serif; font-size: 1.3rem; margin-bottom: 18px; }
+    .tc-why-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .tc-why-item { font-size: .82rem; color: var(--muted); line-height: 1.65; padding-left: 16px; position: relative; }
+    .tc-why-item::before { content: '→'; position: absolute; left: 0; color: var(--gold); font-size: .72rem; }
+    .tc-cta { text-align: center; }
+    .tc-cta-text {
+      font-family: 'DM Serif Display', serif; font-style: italic;
+      font-size: 1.2rem; color: var(--muted); margin-bottom: 28px; line-height: 1.5;
+    }
+
+    /* ─── CONTACT ─── */
+    #contact {
+      padding: 100px 64px; background: var(--bg2);
+      position: relative; z-index: 1; overflow: hidden;
+    }
+    #contact::before {
+      content: 'D&P';
+      position: absolute; bottom: -40px; right: 40px;
+      font-family: 'DM Serif Display', serif; font-size: 20vw;
+      color: rgba(184,151,90,0.03); line-height: 1;
+      pointer-events: none; user-select: none;
+    }
+    .contact-inner {
+      max-width: 1400px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center;
+    }
+    .contact-left {}
+    .contact-details { margin-top: 36px; display: flex; flex-direction: column; gap: 20px; }
+    .contact-item { display: flex; gap: 18px; align-items: flex-start; }
+    .ci-icon {
+      width: 42px; height: 42px; flex-shrink: 0;
+      background: var(--gold-dim); border: 1px solid var(--gold-border);
+      display: flex; align-items: center; justify-content: center; font-size: 1rem;
+    }
+    .ci-label { font-size: .58rem; letter-spacing: .22em; text-transform: uppercase; color: var(--gold); margin-bottom: 3px; font-weight: 500; }
+    .ci-val { font-size: .95rem; color: var(--text); }
+    .ci-val a { color: var(--text); text-decoration: none; transition: color .2s; }
+    .ci-val a:hover { color: var(--gold); }
+
+    .contact-form { display: flex; flex-direction: column; gap: 14px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form-field {
+      display: flex; flex-direction: column; gap: 6px;
+    }
+    .form-field label { font-size: .6rem; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+    .form-field input,
+    .form-field select,
+    .form-field textarea {
+      background: var(--card); border: 1px solid var(--border);
+      color: var(--text); padding: 13px 16px;
+      font-family: 'DM Sans', sans-serif; font-size: .88rem; font-weight: 300;
+      outline: none; transition: border-color .25s;
+      resize: none;
+    }
+    .form-field input:focus,
+    .form-field select:focus,
+    .form-field textarea:focus { border-color: var(--gold); }
+    .form-field select option { background: var(--card); }
+    .form-submit {
+      font-weight: 600; font-size: .78rem; letter-spacing: .12em; text-transform: uppercase;
+      background: var(--gold); color: var(--bg);
+      padding: 16px; border: none; cursor: pointer; width: 100%;
+      transition: background .2s;
+    }
+    .form-submit:hover { background: var(--gold2); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--bg); border-top: 1px solid var(--border);
+      padding: 40px 64px; position: relative; z-index: 1;
+    }
+    .footer-inner {
+      max-width: 1400px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 20px;
+    }
+    .footer-brand { display: flex; flex-direction: column; gap: 2px; }
+    .footer-brand-name {
+      font-family: 'DM Serif Display', serif; font-size: 1rem; letter-spacing: .04em;
+    }
+    .footer-brand-sub { font-size: .52rem; letter-spacing: .3em; text-transform: uppercase; color: var(--gold); }
+    .footer-links { display: flex; gap: 28px; }
+    .footer-links a {
+      font-size: .68rem; letter-spacing: .14em; text-transform: uppercase;
+      color: var(--muted); text-decoration: none; transition: color .25s;
+    }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-legal { font-size: .6rem; color: var(--dim); letter-spacing: .08em; text-align: right; max-width: 360px; line-height: 1.6; }
+
+    /* ─── ANIMS ─── */
+    @keyframes fadeUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+
+    /* ─── MOBILE ─── */
+    @media (max-width: 1000px) {
+      nav { padding: 16px 24px; }
+      nav.scrolled { padding: 12px 24px; }
+      .nav-links { display: none; }
+      #hero { padding: 0 24px 80px; }
+      .hero-metrics { display: none; }
+      .hero-actions { flex-direction: column; align-items: flex-start; }
+      #about, .super-intro, .contact-inner { grid-template-columns: 1fr; gap: 50px; }
+      #about, #products, #supercycle, #contact { padding: 80px 24px; }
+      .products-head, .products-grid, .data-points, .sectors-grid { grid-template-columns: 1fr; }
+      .tc-grid { grid-template-columns: 1fr; }
+      .thesis-close { padding: 36px 28px; }
+      .form-row { grid-template-columns: 1fr; }
+      footer { padding: 28px 24px; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+      .footer-legal { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="#hero" class="nav-logo">
+    <span class="nav-logo-main">Daley &amp; Paulk</span>
+    <span class="nav-logo-sub">LLC — Institutional Capital</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#products">Products</a></li>
+    <li><a href="#supercycle">Research</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-contact">Get Started</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-lines">
+    <div class="hero-line"></div><div class="hero-line"></div><div class="hero-line"></div>
+    <div class="hero-line"></div><div class="hero-line"></div><div class="hero-line"></div>
+    <div class="hero-line"></div><div class="hero-line"></div>
+  </div>
+  <svg class="hero-chart" viewBox="0 0 1440 400" preserveAspectRatio="none" fill="none">
+    <path d="M0 380 L80 360 L200 340 L280 300 L360 310 L440 260 L520 240 L580 200 L640 210 L720 160 L800 120 L880 140 L960 90 L1040 60 L1120 80 L1200 40 L1280 20 L1360 30 L1440 10" stroke="rgba(184,151,90,0.12)" stroke-width="1.5"/>
+    <path d="M0 380 L80 360 L200 340 L280 300 L360 310 L440 260 L520 240 L580 200 L640 210 L720 160 L800 120 L880 140 L960 90 L1040 60 L1120 80 L1200 40 L1280 20 L1360 30 L1440 10 L1440 400 L0 400 Z" fill="url(#chartGrad)" opacity="0.3"/>
+    <defs>
+      <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="rgba(184,151,90,0.08)"/>
+        <stop offset="100%" stop-color="transparent"/>
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <div style="position:relative;z-index:2">
+    <div class="hero-eyebrow">Daley &amp; Paulk LLC — Est. Kansas City</div>
+    <h1>
+      Institutional<br/>
+      <em>Signals</em> for a<br/>
+      <span class="ghost">Fraction</span><br/>
+      of the Cost.
+    </h1>
+    <p class="hero-tagline">
+      At the intersection of quantitative innovation and macroeconomic foresight, we engineer systematic trading solutions that consistently generate market-beating returns in all regimes.
+    </p>
+    <div class="hero-bottom">
+      <div class="hero-actions">
+        <a href="#products" class="btn-gold">Explore Products</a>
+        <a href="#supercycle" class="btn-outline">Read Our Research</a>
+      </div>
+      <div class="hero-metrics">
+        <div class="hm">
+          <div class="hm-num">24/7</div>
+          <div class="hm-label">Market Coverage</div>
+        </div>
+        <div class="hm">
+          <div class="hm-num">4</div>
+          <div class="hm-label">Product Verticals</div>
+        </div>
+        <div class="hm">
+          <div class="hm-num">Alpha</div>
+          <div class="hm-label">Risk-Adjusted Returns</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span class="ti sym">EURUSD</span><span class="ti up">▲ 1.0842</span><span class="ti sep">  ·  </span>
+    <span class="ti sym">GBPUSD</span><span class="ti dn">▼ 1.2731</span><span class="ti sep">  ·  </span>
+    <span class="ti sym">XAUUSD</span><span class="ti up">▲ 3,124.50</span><span class="ti sep">  ·  </span>
+    <span class="ti sym">XAGUSD</span><span class="ti up">▲ 34.82</span><span class="ti sep">  ·  </span>
+    <span class="ti sym">USOIL</span><span class="ti dn">▼ 78.14</span><span class="ti sep">  ·  </span>
+    <span class="ti sym">BTC/USD</span><span class="ti up">▲ 86,440</span><span class="ti sep">  ·  </span>
+    <span class="ti sym">ETH/USD</span><span class="ti up">▲ 3,210</span><span class="ti sep">  ·  </span>
+    <span class="ti sym">URA</span><span class="ti up">▲ 28.74</span><span class="ti sep">  ·  </span>
+    <span class="ti sym">USDJPY</span><span class="ti dn">▼ 149.62</span><span class="ti sep">  ·  </span>
+    <!-- repeat -->
+    <span class="ti sym">EURUSD</span><span class="ti up">▲ 1.0842</span><span class="ti sep">  ·  </span>
+    <span class="ti sym">GBPUSD</span><span class="ti dn">▼ 1.2731</span><span class="ti sep">  ·  </span>
+    <span class="ti sym">XAUUSD</span><span class="ti up">▲ 3,124.50</span><span class="ti sep">  ·  </span>
+    <span class="ti sym">XAGUSD</span><span class="ti up">▲ 34.82</span><span class="ti sep">  ·  </span>
+    <span class="ti sym">USOIL</span><span class="ti dn">▼ 78.14</span><span class="ti sep">  ·  </span>
+    <span class="ti sym">BTC/USD</span><span class="ti up">▲ 86,440</span><span class="ti sep">  ·  </span>
+    <span class="ti sym">ETH/USD</span><span class="ti up">▲ 3,210</span><span class="ti sep">  ·  </span>
+    <span class="ti sym">URA</span><span class="ti up">▲ 28.74</span><span class="ti sep">  ·  </span>
+    <span class="ti sym">USDJPY</span><span class="ti dn">▼ 149.62</span><span class="ti sep">  ·  </span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="reveal">
+    <span class="label">Our Mission</span>
+    <h2 class="section-title">We don't follow trends.<br/><em>We anticipate them.</em></h2>
+    <div class="gold-rule"></div>
+    <p class="body-copy">Through advanced machine learning, high-frequency data analysis, and proprietary signal architecture, our algorithms are built to capture alpha where others see noise — turning complex market inefficiencies into your strategic advantage.</p>
+    <p class="body-copy" style="margin-top:14px">Our mission is to democratize institutional-grade alpha, delivering exceptional risk-adjusted yields to investors who demand more than passive market exposure.</p>
+    <div class="about-pillars">
+      <div class="pillar">
+        <div class="pillar-num">I</div>
+        <div>
+          <div class="pillar-title">Quantitative Innovation</div>
+          <p class="pillar-desc">Proprietary signal architecture built on machine learning models trained across multiple market regimes and asset classes.</p>
+        </div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">II</div>
+        <div>
+          <div class="pillar-title">Macroeconomic Foresight</div>
+          <p class="pillar-desc">Deep structural analysis of global capital flows, demographic shifts, and commodity cycles that drive decade-long alpha.</p>
+        </div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">III</div>
+        <div>
+          <div class="pillar-title">Democratized Access</div>
+          <p class="pillar-desc">Institutional-grade tools and intelligence made accessible to individual traders and investors at a fraction of traditional costs.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="reveal" style="transition-delay:.2s">
+    <div class="about-quote">
+      <p class="quote-text">"We engineer systematic trading solutions that consistently generate market-beating returns — not by chasing trends, but by building the infrastructure to see them first."</p>
+      <div class="quote-attr">Daley &amp; Paulk LLC — Core Philosophy</div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products">
+  <div class="products-head reveal">
+    <div>
+      <span class="label">Product Suite</span>
+      <h2 class="section-title">Four verticals.<br/><em>One edge.</em></h2>
+      <div class="gold-rule"></div>
+    </div>
+    <p class="products-note">Each product is built on the same core signal infrastructure — battle-tested across varying market conditions and designed to perform whether markets are trending, ranging, or in full regime change.</p>
+  </div>
+  <div class="products-grid">
+
+    <div class="prod-card reveal">
+      <span class="prod-tag">API Access</span>
+      <span class="prod-number">01 — Forex</span>
+      <h3 class="prod-name">Forex Trading<br/>API Access</h3>
+      <p class="prod-desc">Go beyond simple execution. Our low-latency API delivers a stream of institutional-grade forex signals and systematic execution logic, transforming the 24/7 currency market into a predictable source of non-correlated alpha.</p>
+      <a href="#contact" class="prod-link">Get Started</a>
+    </div>
+
+    <div class="prod-card reveal" style="transition-delay:.1s">
+      <span class="prod-tag">API Access</span>
+      <span class="prod-number">02 — Crypto</span>
+      <h3 class="prod-name">Crypto Trading<br/>API Access</h3>
+      <p class="prod-desc">Navigate crypto volatility with quantitative precision. Our API provides real-time access to proprietary signals and market-neutral strategies, capturing yield from arbitrage, momentum, and volatility regimes that retail traders miss.</p>
+      <a href="#contact" class="prod-link">Get Started</a>
+    </div>
+
+    <div class="prod-card reveal" style="transition-delay:.05s">
+      <span class="prod-tag">Core IP</span>
+      <span class="prod-number">03 — Prop Trading</span>
+      <h3 class="prod-name">Prop Trading<br/>Signal Generation</h3>
+      <p class="prod-desc">This is our core intellectual property. A multi-strategy, regime-switching signal engine that identifies high-probability opportunities across global markets. The foundation of our market outperformance, now available for select partners.</p>
+      <a href="#contact" class="prod-link">Inquire for Access</a>
+    </div>
+
+    <div class="prod-card reveal" style="transition-delay:.15s">
+      <span class="prod-tag">Financial Services</span>
+      <span class="prod-number">04 — Credit</span>
+      <h3 class="prod-name">Credit Building<br/>Services</h3>
+      <p class="prod-desc">Our system analyzes and optimizes your credit behavior in real-time — not just to build a score, but to strategically enhance your borrowing capacity and reduce lifetime interest costs, freeing up capital for investment.</p>
+      <a href="#contact" class="prod-link">Get Started</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- SUPERCYCLE RESEARCH -->
+<section id="supercycle">
+  <div class="super-intro reveal">
+    <div>
+      <span class="label">Market Research</span>
+      <h2 class="section-title">The Big Long:<br/><em>The Coming Commodity Supercycle</em></h2>
+      <div class="gold-rule"></div>
+    </div>
+    <div class="super-intro-right">
+      <p>We are at the inflection point of a generational shift from financial assets to real assets. After <strong>14 years of technology equity dominance</strong>, structural market conditions now favor commodities. Historical patterns dating back to 1929 suggest we're entering a commodity bull market that could rival the <strong>1970s and early 2000s in magnitude.</strong></p>
+    </div>
+  </div>
+
+  <!-- Data Points -->
+  <div class="data-points reveal">
+    <div class="dp-card">
+      <span class="dp-icon">📊</span>
+      <div class="dp-title">Valuation Extremes</div>
+      <p class="dp-body">The Dow Jones to Gold ratio sits at levels comparable to 1929, 1970s inflation, and the 2000 tech bubble — each followed by massive commodity outperformance.</p>
+    </div>
+    <div class="dp-card">
+      <span class="dp-icon">📉</span>
+      <div class="dp-title">Bond Market Breakdown</div>
+      <p class="dp-body">The 40-year bond bull market has reversed, with yields breaking out to the upside and bond prices falling over 50% since 2020 — a historic regime change.</p>
+    </div>
+    <div class="dp-card">
+      <span class="dp-icon">📈</span>
+      <div class="dp-title">Demographic Tailwinds</div>
+      <p class="dp-body">45 million millennials entering peak home-buying years against historically low housing inventory, driving credit creation and structural inflation.</p>
+    </div>
+    <div class="dp-card">
+      <span class="dp-icon">⚠️</span>
+      <div class="dp-title">Supply Constraints</div>
+      <p class="dp-body">Critical commodities face structural supply deficits while above-ground inventories sit at multi-decade lows — a demand-supply mismatch with no quick resolution.</p>
+    </div>
+  </div>
+
+  <!-- Sectors -->
+  <div class="sectors-title reveal">Primary Investment Opportunities</div>
+  <div class="sectors-grid reveal">
+    <div class="sector-card">
+      <div class="sector-name">Energy</div>
+      <ul class="sector-bullets">
+        <li class="sector-bullet">Oil: most inflation-sensitive asset in the modern economy</li>
+        <li class="sector-bullet">Historical correlation with housing starts suggests 5–10× returns</li>
+        <li class="sector-bullet">Royalty companies offer 600% returns in prior cycles</li>
+      </ul>
+    </div>
+    <div class="sector-card">
+      <div class="sector-name">Uranium</div>
+      <ul class="sector-bullets">
+        <li class="sector-bullet">1,400% price appreciation in last cycle with better fundamentals today</li>
+        <li class="sector-bullet">Supply constraints and minimal above-ground inventory</li>
+        <li class="sector-bullet">Paladin Energy returned 50,000% during last cycle</li>
+      </ul>
+    </div>
+    <div class="sector-card">
+      <div class="sector-name">Real Estate</div>
+      <ul class="sector-bullets">
+        <li class="sector-bullet">Home construction stocks historically outperform during inventory expansion</li>
+        <li class="sector-bullet">Hovnanian Enterprises: 23× returns 2000–2005</li>
+        <li class="sector-bullet">Current inventory shortages create ideal conditions for builders</li>
+      </ul>
+    </div>
+    <div class="sector-card">
+      <div class="sector-name">Precious Metals</div>
+      <ul class="sector-bullets">
+        <li class="sector-bullet">Gold: 600% returns 2000–2011, 20× during 1970s inflationary regime</li>
+        <li class="sector-bullet">Silver: elevated Gold/Silver ratio signals significant catch-up potential</li>
+        <li class="sector-bullet">Both offer asymmetric upside in real asset rotation</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Thesis close -->
+  <div class="thesis-close reveal">
+    <div class="tc-grid">
+      <div class="tc-why">
+        <div class="tc-why-title">Why This Cycle Is Different</div>
+        <ul class="tc-why-list">
+          <li class="tc-why-item">Simultaneous breakdown in both stocks and bonds — capital rotation not seen since the 1970s</li>
+          <li class="tc-why-item">Demographic wave coincides with inventory shortages across housing and commodities</li>
+          <li class="tc-why-item">40-year interest rate downtrend broken — regime change favors real assets</li>
+        </ul>
+      </div>
+      <div class="tc-why">
+        <div class="tc-why-title">Structural Alpha Drivers</div>
+        <ul class="tc-why-list">
+          <li class="tc-why-item">Mean reversion from extreme valuation disparities between tech and commodities</li>
+          <li class="tc-why-item">Inflation hedging demand as real estate-driven credit creation accelerates</li>
+          <li class="tc-why-item">Supply-demand imbalances worsened by a decade of underinvestment</li>
+        </ul>
+      </div>
+      <div class="tc-cta">
+        <p class="tc-cta-text">"The data suggests we're not merely at a market cycle turn — but a fundamental regime change that may define asset performance for the coming decade."</p>
+        <a href="#contact" class="btn-gold">Take Action</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="reveal">
+      <span class="label">Get In Touch</span>
+      <h2 class="section-title">Ready to access<br/><em>institutional alpha?</em></h2>
+      <div class="gold-rule"></div>
+      <p class="body-copy">Whether you're interested in our trading APIs, signal generation, or credit services — reach out and we'll match you with the right product for your goals.</p>
+      <div class="contact-details">
+        <div class="contact-item">
+          <div class="ci-icon">✉️</div>
+          <div>
+            <div class="ci-label">Email</div>
+            <div class="ci-val"><a href="mailto:contact@daleypaulk.com">contact@daleypaulk.com</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">📞</div>
+          <div>
+            <div class="ci-label">Phone</div>
+            <div class="ci-val"><a href="tel:7193087231">719-308-7231</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">📍</div>
+          <div>
+            <div class="ci-label">Location</div>
+            <div class="ci-val">Kansas City, Missouri</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="reveal" style="transition-delay:.2s">
+      <form class="contact-form" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-field">
+            <label>First Name</label>
+            <input type="text" placeholder="John" />
+          </div>
+          <div class="form-field">
+            <label>Last Name</label>
+            <input type="text" placeholder="Smith" />
+          </div>
+        </div>
+        <div class="form-field">
+          <label>Email Address</label>
+          <input type="email" placeholder="john@example.com" />
+        </div>
+        <div class="form-field">
+          <label>I'm Interested In</label>
+          <select>
+            <option value="" disabled selected>Select a product</option>
+            <option>Forex Trading API Access</option>
+            <option>Crypto Trading API Access</option>
+            <option>Prop Trading Signal Generation</option>
+            <option>Credit Building Services</option>
+            <option>General Inquiry</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label>Message</label>
+          <textarea rows="4" placeholder="Tell us about your goals and how we can help..."></textarea>
+        </div>
+        <button type="submit" class="form-submit">Send Message →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-brand-name">Daley &amp; Paulk</div>
+      <div class="footer-brand-sub">LLC — Institutional Capital</div>
+    </div>
+    <div class="footer-links">
+      <a href="#about">About</a>
+      <a href="#products">Products</a>
+      <a href="#supercycle">Research</a>
+      <a href="#contact">Contact</a>
+      <a href="mailto:contact@daleypaulk.com">Email Us</a>
+    </div>
+    <div class="footer-legal">
+      © 2026 Daley &amp; Paulk LLC. All rights reserved.<br/>
+      This content is for informational purposes only and does not constitute financial advice. Past performance is not indicative of future results.
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Nav scroll
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 60));
+
+  // Reveal on scroll
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
+  }, { threshold: 0.07 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  // Form submit
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.form-submit');
+    btn.textContent = 'Message Sent ✓';
+    btn.style.background = '#22c55e';
+    btn.style.color = '#fff';
+    setTimeout(() => {
+      btn.textContent = 'Send Message →';
+      btn.style.background = '';
+      btn.style.color = '';
+      e.target.reset();
+    }, 3500);
+  }
+</script>
+</body>
+</html>
