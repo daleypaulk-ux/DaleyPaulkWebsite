@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog | Daley &amp; Paulk LLC — App Dev, Website Dev &amp; Trading API Insights</title>
+  <meta name="description" content="Practical guides on app development, website development, forex trading API software, and crypto trading automation from the team at Daley &amp; Paulk LLC." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://daleypaulk.com/blog/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Blog | Daley &amp; Paulk LLC" />
+  <meta property="og:description" content="Guides on app development, website development, forex API, and crypto trading automation." />
+  <meta property="og:url" content="https://daleypaulk.com/blog/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="blog.css" />
+  <style>
+    .blog-hero {
+      padding: 140px 64px 80px;
+      max-width: 1400px;
+      margin: 0 auto;
+      position: relative; z-index: 1;
+    }
+    .blog-grid {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 64px 100px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+      position: relative; z-index: 1;
+    }
+    .blog-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 44px 40px;
+      text-decoration: none;
+      transition: border-color .3s, background .3s;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      position: relative;
+      overflow: hidden;
+    }
+    .blog-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; bottom: 0; width: 2px;
+      background: var(--gold);
+      transform: scaleY(0); transform-origin: top;
+      transition: transform .4s ease;
+    }
+    .blog-card:hover { border-color: var(--gold-border); background: var(--bg3); }
+    .blog-card:hover::before { transform: scaleY(1); }
+    .blog-cat { font-size: .58rem; letter-spacing: .28em; text-transform: uppercase; color: var(--gold); font-weight: 500; }
+    .blog-title { font-family: 'DM Serif Display', serif; font-size: 1.4rem; line-height: 1.2; color: var(--text); }
+    .blog-excerpt { font-size: .83rem; color: var(--muted); line-height: 1.75; }
+    .blog-meta { font-size: .62rem; letter-spacing: .12em; text-transform: uppercase; color: var(--dim); margin-top: auto; padding-top: 16px; border-top: 1px solid var(--border); }
+    @media (max-width: 900px) {
+      .blog-hero { padding: 110px 20px 60px; }
+      .blog-grid { grid-template-columns: 1fr; padding: 0 20px 80px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">
+    <span class="nav-logo-main">Daley &amp; Paulk</span>
+    <span class="nav-logo-sub">LLC — Software &amp; Trading APIs</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/#about">About</a></li>
+    <li><a href="/#products">Services</a></li>
+    <li><a href="/blog/">Blog</a></li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+  <a href="/#contact" class="nav-cta">Get Started</a>
+</nav>
+
+<div class="blog-hero">
+  <span class="article-label">Insights &amp; Guides</span>
+  <h1 style="font-family:'DM Serif Display',serif;font-size:clamp(2.2rem,5vw,4rem);font-weight:400;line-height:1.05;margin-bottom:20px;">
+    App Dev, Website Dev<br/>&amp; <em style="font-style:italic;color:var(--gold)">Trading API</em> Guides
+  </h1>
+  <div class="gold-rule"></div>
+  <p style="font-size:.95rem;color:var(--muted);line-height:1.8;max-width:560px;">Practical guides from the Daley &amp; Paulk team on building trading bots, connecting to forex and crypto APIs, and what to look for in a software development partner.</p>
+</div>
+
+<div class="blog-grid">
+
+  <a class="blog-card" href="/blog/forex-trading-bot-api-guide.html">
+    <div class="blog-cat">Forex API</div>
+    <div class="blog-title">How to Build a Forex Trading Bot with API Signals</div>
+    <div class="blog-excerpt">A practical breakdown of how forex trading bot API software works, what you need to get started, and how to connect signal endpoints to your execution layer.</div>
+    <div class="blog-meta">March 20, 2026 &nbsp;·&nbsp; 8 min read</div>
+  </a>
+
+  <a class="blog-card" href="/blog/crypto-trading-api-automation.html">
+    <div class="blog-cat">Crypto API</div>
+    <div class="blog-title">Crypto Trading API: A Developer's Guide to Automated Crypto Strategies</div>
+    <div class="blog-excerpt">How to use a crypto trading API to build automated strategies, what signal data you need, and the difference between a good API and a bad one.</div>
+    <div class="blog-meta">March 20, 2026 &nbsp;·&nbsp; 7 min read</div>
+  </a>
+
+  <a class="blog-card" href="/blog/custom-app-development-kansas-city.html">
+    <div class="blog-cat">App Development</div>
+    <div class="blog-title">Custom App Development in Kansas City: What to Expect and How to Choose</div>
+    <div class="blog-excerpt">What the custom app development process actually looks like, what questions to ask before you hire, and how to avoid the most common mistakes businesses make.</div>
+    <div class="blog-meta">March 20, 2026 &nbsp;·&nbsp; 7 min read</div>
+  </a>
+
+  <a class="blog-card" href="/blog/website-development-for-businesses.html">
+    <div class="blog-cat">Website Development</div>
+    <div class="blog-title">Website Development for Small Businesses: What Actually Matters for SEO and Conversions</div>
+    <div class="blog-excerpt">Most small business websites lose clients before they even make contact. Here is what a good website actually needs — and what most developers skip.</div>
+    <div class="blog-meta">March 20, 2026 &nbsp;·&nbsp; 6 min read</div>
+  </a>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand-name">Daley &amp; Paulk</div>
+      <div class="footer-brand-sub">LLC — Software &amp; Trading APIs</div>
+    </div>
+    <div class="footer-legal">
+      &copy; 2026 Daley &amp; Paulk LLC. All rights reserved.<br/>
+      Software company. Not a broker-dealer, investment advisor, or custodian.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
