@@ -200,10 +200,21 @@
         radial-gradient(ellipse 40% 60% at 10% 80%, rgba(184,151,90,0.04) 0%, transparent 50%),
         linear-gradient(180deg, #07090d 0%, #0b0d14 100%);
     }
+    #hero.vanta-active .hero-bg {
+      background: linear-gradient(180deg, rgba(7,9,13,0.86) 0%, rgba(11,13,20,0.9) 100%);
+    }
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(7,9,13,0.25) 0%, rgba(7,9,13,0.55) 100%);
+      pointer-events: none;
+    }
     /* Vertical lines — market chart feel */
     .hero-lines {
       position: absolute; inset: 0; pointer-events: none;
       display: flex; gap: 0; overflow: hidden;
+      opacity: .5;
     }
     .hero-line {
       flex: 1; border-right: 1px solid rgba(184,151,90,0.04);
@@ -212,6 +223,7 @@
     .hero-chart {
       position: absolute; bottom: 0; left: 0; right: 0; height: 60%;
       pointer-events: none;
+      opacity: .72;
     }
 
     h1 {
@@ -721,7 +733,7 @@
 
 <!-- HERO -->
 <section id="hero">
-  <div class="hero-bg"></div>
+  <div class="hero-bg" id="hero-vanta"></div>
   <div class="hero-lines">
     <div class="hero-line"></div><div class="hero-line"></div><div class="hero-line"></div>
     <div class="hero-line"></div><div class="hero-line"></div><div class="hero-line"></div>
@@ -1147,10 +1159,64 @@
   </div>
 </footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
 <script>
   // Nav scroll
   const nav = document.getElementById('mainNav');
   window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 60));
+
+  // Hero ambient background (Vanta.js) with graceful fallback
+  let vantaEffect = null;
+
+  function initHeroAmbient() {
+    const hero = document.getElementById('hero');
+    const target = document.getElementById('hero-vanta');
+    if (!hero || !target) return;
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const smallScreen = window.innerWidth < 768;
+    if (prefersReducedMotion || smallScreen || !window.VANTA?.NET) return;
+
+    try {
+      vantaEffect = window.VANTA.NET({
+        el: target,
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200,
+        minWidth: 200,
+        scale: 1,
+        scaleMobile: 1,
+        color: 0xb8975a,
+        backgroundColor: 0x07090d,
+        points: 10,
+        maxDistance: 22,
+        spacing: 18,
+        showDots: false
+      });
+      hero.classList.add('vanta-active');
+    } catch {
+      // Keep static gradient fallback if Vanta fails.
+    }
+  }
+
+  function bootHeroAmbient(attempt = 0) {
+    if (window.VANTA?.NET) {
+      initHeroAmbient();
+      return;
+    }
+    if (attempt < 20) {
+      setTimeout(() => bootHeroAmbient(attempt + 1), 150);
+    }
+  }
+
+  window.addEventListener('load', () => bootHeroAmbient());
+  window.addEventListener('resize', () => {
+    if (vantaEffect && typeof vantaEffect.resize === 'function') {
+      vantaEffect.resize();
+    }
+  });
 
   // Reveal on scroll
   const obs = new IntersectionObserver(entries => {
