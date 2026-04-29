@@ -467,6 +467,30 @@
       color: var(--text); margin-bottom: 28px;
     }
     .quote-attr { font-size: .72rem; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); font-weight: 500; }
+    .section-visual-card {
+      background: var(--card);
+      border: 1px solid var(--gold-border);
+      overflow: hidden;
+      position: relative;
+    }
+    .section-visual-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: saturate(0.86) contrast(1.04) brightness(0.9);
+    }
+    .section-visual-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(7,9,13,0.1), rgba(7,9,13,0.42));
+      pointer-events: none;
+    }
+    .about-visual {
+      height: 320px;
+      margin-bottom: 16px;
+    }
 
     /* ─── PRODUCTS ─── */
     #products {
@@ -543,6 +567,14 @@
     }
     .products-head { max-width: 1400px; margin: 0 auto 64px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: end; }
     .products-note { font-size: .95rem; color: var(--muted); line-height: 1.62; max-width: 62ch; }
+    .products-visual-row {
+      max-width: 1400px;
+      margin: 0 auto 34px;
+      display: grid;
+      grid-template-columns: 1.3fr 1fr 1fr;
+      gap: 10px;
+    }
+    .products-visual-row .section-visual-card { height: 180px; }
 
     .products-grid {
       max-width: 1400px; margin: 0 auto;
@@ -611,6 +643,10 @@
     }
     .super-intro-right { font-size: .95rem; color: var(--muted); line-height: 1.85; }
     .super-intro-right strong { color: var(--text); font-weight: 500; }
+    .super-visual {
+      height: 220px;
+      margin: 0 0 30px;
+    }
 
     /* Data Points */
     .data-points {
@@ -709,6 +745,10 @@
     .ci-val a:hover { color: var(--gold); }
 
     .contact-form { display: flex; flex-direction: column; gap: 14px; }
+    .contact-visual {
+      height: 180px;
+      margin-bottom: 14px;
+    }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
     .form-field {
       display: flex; flex-direction: column; gap: 6px;
@@ -818,6 +858,11 @@
       #about, .super-intro, .contact-inner { grid-template-columns: 1fr; gap: 50px; }
       #about, #products, #supercycle, #contact, #faq { padding: 80px 24px; }
       .products-head, .products-grid, .data-points, .sectors-grid, .faq-grid { grid-template-columns: 1fr; }
+      .products-visual-row { grid-template-columns: 1fr; margin-bottom: 20px; }
+      .products-visual-row .section-visual-card,
+      .about-visual,
+      .super-visual,
+      .contact-visual { height: 170px; }
       #products::after, #supercycle::after, #faq::after, .contact-inner::before { opacity: .16; background-size: 240px 150px; }
       .supercycle-chart-bg { opacity: .12; }
       .tc-grid { grid-template-columns: 1fr; }
@@ -964,8 +1009,8 @@
     <span class="label">Our Mission</span>
     <h2 class="section-title">We don't follow trends.<br/><em>We anticipate them.</em></h2>
     <div class="gold-rule"></div>
-      <p class="body-copy">We build custom apps, business websites, forex trading API software, and crypto trading API tools. Whether you need a fully custom application, a high-performance website, or automated trading infrastructure, we build software designed to perform in the real world.</p>
-    <p class="body-copy" style="margin-top:14px">Our mission is simple: deliver reliable, professional-grade software to businesses and traders who need technology that actually works — without the agency overhead or the guesswork.</p>
+    <p class="body-copy">We build financial software, automation systems, and custom operational tools for teams that need dependable execution in production environments.</p>
+    <p class="body-copy" style="margin-top:14px">Our focus is practical: clear architecture, disciplined delivery, and software that supports real workflows.</p>
     <div class="about-pillars">
       <div class="pillar">
         <div class="pillar-num">I</div>
@@ -991,6 +1036,9 @@
     </div>
   </div>
   <div class="reveal" style="transition-delay:.2s">
+    <div class="section-visual-card about-visual">
+      <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1400&q=80" alt="Financial analytics dashboard on a modern workstation" loading="lazy" />
+    </div>
     <div class="about-quote">
       <p class="quote-text">"We build apps, websites, and trading API software for businesses and traders who need real solutions — not promises."</p>
       <div class="quote-attr">Daley &amp; Paulk LLC — Core Philosophy</div>
@@ -1006,7 +1054,18 @@
       <h2 class="section-title">Focused products.<br/><em>One stack.</em></h2>
       <div class="gold-rule"></div>
     </div>
-    <p class="products-note">Our lineup is streamlined around software development and automated trading execution. Solomonn is our flagship automatic trading software service.</p>
+    <p class="products-note">Our product lineup is intentionally focused: flagship automation first, then prop-firm workflows, automatic trading services, and software development support.</p>
+  </div>
+  <div class="products-visual-row reveal">
+    <div class="section-visual-card">
+      <img src="https://images.unsplash.com/photo-1642790551116-18e150f24895?auto=format&fit=crop&w=1400&q=80" alt="Professional trading setup with multiple market charts" loading="lazy" />
+    </div>
+    <div class="section-visual-card">
+      <img src="https://images.unsplash.com/photo-1518186285589-2f7649de83e0?auto=format&fit=crop&w=1200&q=80" alt="Software development code on monitor in dark office" loading="lazy" />
+    </div>
+    <div class="section-visual-card">
+      <img src="https://images.unsplash.com/photo-1559526324-593bc073d938?auto=format&fit=crop&w=1200&q=80" alt="Financial chart analysis with upward trend lines" loading="lazy" />
+    </div>
   </div>
   <div class="products-grid">
 
@@ -1057,8 +1116,11 @@
       <div class="gold-rule"></div>
     </div>
     <div class="super-intro-right">
-      <p>We are at the inflection point of a generational shift from financial assets to real assets. After <strong>14 years of technology equity dominance</strong>, structural market conditions now favor commodities. Historical patterns dating back to 1929 suggest we're entering a commodity bull market that could rival the <strong>1970s and early 2000s in magnitude.</strong></p>
+      <p>Our current research thesis tracks a possible multi-year rotation in real assets, with emphasis on supply constraints, rates, and macro regime shifts.</p>
     </div>
+  </div>
+  <div class="section-visual-card super-visual reveal">
+    <img src="https://images.unsplash.com/photo-1560221328-12fe60f83ab8?auto=format&fit=crop&w=1600&q=80" alt="Commodity and market research visual with charts and financial data" loading="lazy" />
   </div>
 
   <!-- Data Points -->
@@ -1155,7 +1217,7 @@
     <span class="label">Common Questions</span>
     <h2 class="section-title">Automatic trading software<br/><em>or custom software?</em></h2>
     <div class="gold-rule"></div>
-    <p class="body-copy">Common questions about Solomonn automatic trading software, automatic prop firm trading software, automatic trading services software, and software development for operations teams.</p>
+    <p class="body-copy">Common questions about our core software services, implementation process, and legal-safe positioning.</p>
   </div>
   <div class="faq-grid reveal">
     <div class="faq-item">
@@ -1192,7 +1254,7 @@
       <span class="label">Get In Touch</span>
       <h2 class="section-title">Ready to build<br/><em>something that works?</em></h2>
       <div class="gold-rule"></div>
-      <p class="body-copy">Whether you need Solomonn automatic trading software, automatic prop firm trading software, automatic trading services software, or software development support, reach out and we will scope the right fit.</p>
+      <p class="body-copy">Tell us your goals and current workflow. We will recommend the right service path and next implementation steps.</p>
       <div class="contact-details">
         <div class="contact-item">
           <div class="ci-icon">✉️</div>
@@ -1218,6 +1280,9 @@
       </div>
     </div>
     <div class="reveal" style="transition-delay:.2s">
+      <div class="section-visual-card contact-visual">
+        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1400&q=80" alt="Professional software team collaborating in a modern office" loading="lazy" />
+      </div>
       <form class="contact-form" id="contactForm" onsubmit="handleSubmit(event)">
         <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_KEY" />
         <input type="hidden" name="subject" value="New Inquiry — Daley & Paulk LLC" />
