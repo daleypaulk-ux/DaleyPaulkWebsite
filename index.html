@@ -4,9 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Daley &amp; Paulk LLC | Financial Trading Software, Apps &amp; Websites</title>
-  <meta name="description" content="Daley &amp; Paulk LLC builds financial trading software as our core service, plus custom app and website development in Kansas City. Forex and crypto API solutions for traders and businesses." />
+  <meta name="description" content="Daley &amp; Paulk LLC builds financial trading software as our core service, plus custom app and website development. Forex and crypto API solutions for traders and businesses." />
   <meta name="robots" content="index, follow" />
-  <meta name="keywords" content="financial trading software, trading bot software, algorithmic trading software, forex trading API, crypto trading API, app development Kansas City, website development Kansas City, custom app development, custom software development" />
+  <meta name="keywords" content="financial trading software, trading bot software, algorithmic trading software, forex trading API, crypto trading API, app development, website development, custom app development, custom software development" />
   <link rel="canonical" href="https://daleypaulk.com/" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Daley &amp; Paulk LLC | Financial Trading Software, Apps &amp; Websites" />
@@ -24,11 +24,9 @@
       "url": "https://daleypaulk.com/",
       "email": "contact@daleypaulk.com",
       "telephone": "+1-719-308-7231",
-      "description": "Kansas City software company focused on financial trading software, forex and crypto APIs, plus custom app and website development services.",
+      "description": "Software company focused on financial trading software, forex and crypto APIs, plus custom app and website development services.",
       "address": {
         "@type": "PostalAddress",
-        "addressLocality": "Kansas City",
-        "addressRegion": "MO",
         "addressCountry": "US"
       },
       "hasOfferCatalog": {
@@ -143,14 +141,14 @@
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 200;
       display: flex; align-items: center; justify-content: space-between;
-      padding: 24px 64px;
+      padding: 14px 64px;
       transition: background .35s, padding .3s, border-color .35s;
       border-bottom: 1px solid transparent;
     }
     nav.scrolled {
       background: rgba(7,9,13,.97);
       border-bottom-color: var(--border);
-      padding: 16px 64px;
+      padding: 10px 64px;
       backdrop-filter: blur(12px);
     }
     .nav-logo {
@@ -190,9 +188,9 @@
 
     /* ─── HERO ─── */
     #hero {
-      min-height: 100vh;
-      display: flex; flex-direction: column; justify-content: flex-end;
-      padding: 0 64px 100px;
+      min-height: 88vh;
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 90px 64px 56px;
       position: relative; overflow: hidden;
     }
     .hero-bg {
@@ -216,21 +214,13 @@
       pointer-events: none;
     }
 
-    .hero-eyebrow {
-      font-size: .65rem; letter-spacing: .35em; text-transform: uppercase;
-      color: var(--gold); font-weight: 500; margin-bottom: 28px;
-      position: relative; z-index: 2;
-      display: flex; align-items: center; gap: 14px;
-      opacity: 0; animation: fadeUp .6s .2s forwards;
-    }
-    .hero-eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--gold); }
-
     h1 {
       font-family: 'DM Serif Display', serif;
-      font-size: clamp(3.5rem, 7vw, 8rem);
+      font-size: clamp(2.2rem, 4.8vw, 4.4rem);
       font-weight: 400; line-height: .95; letter-spacing: -.01em;
       position: relative; z-index: 2;
       opacity: 0; animation: fadeUp .85s .35s forwards;
+      white-space: nowrap;
     }
     h1 em { font-style: italic; color: var(--gold); }
     h1 .ghost {
@@ -240,14 +230,15 @@
 
     .hero-tagline {
       font-size: clamp(1rem, 1.8vw, 1.3rem); color: var(--muted);
-      max-width: 560px; line-height: 1.75; margin-top: 32px;
+      max-width: 760px; line-height: 1.65; margin-top: 18px;
       position: relative; z-index: 2;
       opacity: 0; animation: fadeUp .7s .65s forwards;
     }
     .hero-proof {
-      margin-top: 20px;
-      font-size: .72rem; letter-spacing: .12em; text-transform: uppercase;
+      margin-top: 12px;
+      font-size: .68rem; letter-spacing: .08em; text-transform: uppercase;
       color: var(--gold);
+      white-space: nowrap;
       opacity: 0; animation: fadeUp .7s .72s forwards;
     }
     .hero-logo {
@@ -263,10 +254,12 @@
       display: grid;
       grid-template-columns: minmax(0, 1fr) auto;
       align-items: center;
-      gap: 40px;
+      gap: 56px;
     }
     .hero-copy {
-      max-width: 780px;
+      max-width: 900px;
+      text-align: center;
+      margin: 0 auto;
     }
     .hero-logo-wrap {
       display: flex;
@@ -276,11 +269,12 @@
     }
 
     .hero-bottom {
-      display: flex; align-items: flex-end; justify-content: space-between;
-      margin-top: 56px; position: relative; z-index: 2;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 22px;
+      margin-top: 36px; position: relative; z-index: 2;
       opacity: 0; animation: fadeUp .7s .85s forwards;
     }
-    .hero-actions { display: flex; gap: 14px; }
+    .hero-actions { display: flex; gap: 14px; justify-content: center; }
     .btn-gold {
       font-weight: 600; font-size: .78rem; letter-spacing: .12em; text-transform: uppercase;
       background: var(--gold); color: var(--bg);
@@ -678,12 +672,14 @@
       nav.scrolled { padding: 12px 24px; }
       .nav-links { display: none; }
       .nav-logo-mark { width: 34px; height: 34px; }
-      #hero { padding: 0 24px 80px; }
+      #hero { padding: 82px 24px 50px; min-height: 86vh; }
       .hero-content { grid-template-columns: 1fr; gap: 24px; }
-      .hero-logo-wrap { justify-content: flex-end; }
+      .hero-logo-wrap { justify-content: center; }
       .hero-logo { width: min(62vw, 280px); }
       .hero-metrics { display: none; }
-      .hero-actions { flex-direction: column; align-items: flex-start; }
+      .hero-actions { flex-direction: column; align-items: center; }
+      h1 { white-space: normal; line-height: 1.05; }
+      .hero-proof { white-space: normal; }
       #about, .super-intro, .contact-inner { grid-template-columns: 1fr; gap: 50px; }
       #about, #products, #supercycle, #contact, #faq { padding: 80px 24px; }
       .products-head, .products-grid, .data-points, .sectors-grid, .faq-grid { grid-template-columns: 1fr; }
@@ -738,10 +734,8 @@
 
   <div class="hero-content">
     <div class="hero-copy">
-      <div class="hero-eyebrow">Daley &amp; Paulk LLC — Est. Kansas City</div>
       <h1>
-        <em>Financial Software</em><br/>
-        Built to Perform.
+        <em>Financial Software</em> Built to Perform.
       </h1>
       <p class="hero-tagline">
         We build professional financial software focused on automated trading performance, with custom app and web development services for firms that need dependable, production-ready systems.
@@ -756,10 +750,6 @@
           <div class="hm">
             <div class="hm-num">4</div>
             <div class="hm-label">Core Services</div>
-          </div>
-          <div class="hm">
-            <div class="hm-num">KC</div>
-            <div class="hm-label">Kansas City Based</div>
           </div>
           <div class="hm">
             <div class="hm-num">&lt;1d</div>
@@ -837,7 +827,7 @@
     <span class="label">Our Mission</span>
     <h2 class="section-title">We don't follow trends.<br/><em>We anticipate them.</em></h2>
     <div class="gold-rule"></div>
-    <p class="body-copy">We are a Kansas City software company building custom apps, business websites, forex trading API software, and crypto trading API tools. Whether you need a fully custom application, a high-performance website, or automated trading infrastructure, we build software designed to perform in the real world.</p>
+      <p class="body-copy">We build custom apps, business websites, forex trading API software, and crypto trading API tools. Whether you need a fully custom application, a high-performance website, or automated trading infrastructure, we build software designed to perform in the real world.</p>
     <p class="body-copy" style="margin-top:14px">Our mission is simple: deliver reliable, professional-grade software to businesses and traders who need technology that actually works — without the agency overhead or the guesswork.</p>
     <div class="about-pillars">
       <div class="pillar">
@@ -1082,7 +1072,7 @@
           <div class="ci-icon">📍</div>
           <div>
             <div class="ci-label">Location</div>
-            <div class="ci-val">Kansas City, Missouri</div>
+            <div class="ci-val">United States</div>
           </div>
         </div>
       </div>
