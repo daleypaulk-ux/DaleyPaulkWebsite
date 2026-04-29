@@ -462,6 +462,30 @@
     #products {
       padding: 120px 64px; background: var(--bg2); position: relative; z-index: 1;
     }
+    #products::before,
+    #supercycle::before,
+    #faq::before,
+    #contact::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background-image:
+        radial-gradient(circle at 20% 20%, rgba(184,151,90,0.055), transparent 42%),
+        radial-gradient(circle at 85% 75%, rgba(184,151,90,0.03), transparent 38%),
+        linear-gradient(rgba(232,228,218,0.016) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(232,228,218,0.014) 1px, transparent 1px);
+      background-size: auto, auto, 90px 90px, 90px 90px;
+      opacity: .42;
+    }
+    #products > *,
+    #supercycle > *,
+    #faq > *,
+    #contact > * {
+      position: relative;
+      z-index: 1;
+    }
     .products-head { max-width: 1400px; margin: 0 auto 64px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: end; }
     .products-note { font-size: .95rem; color: var(--muted); line-height: 1.62; max-width: 62ch; }
 
@@ -596,6 +620,7 @@
       font-family: 'Inter', 'Roboto', sans-serif; font-size: 20vw; font-weight: 800;
       color: rgba(184,151,90,0.03); line-height: 1;
       pointer-events: none; user-select: none;
+      z-index: 0;
     }
     .contact-inner {
       max-width: 1400px; margin: 0 auto;
