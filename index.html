@@ -251,12 +251,28 @@
       opacity: 0; animation: fadeUp .7s .72s forwards;
     }
     .hero-logo {
-      width: clamp(130px, 14vw, 190px);
+      width: clamp(200px, 24vw, 340px);
       height: auto;
-      margin-bottom: 16px;
       border-radius: 8px;
       border: 1px solid var(--gold-border);
       opacity: 0; animation: fadeUp .65s .12s forwards;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 40px;
+    }
+    .hero-copy {
+      max-width: 780px;
+    }
+    .hero-logo-wrap {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      width: 100%;
     }
 
     .hero-bottom {
@@ -352,6 +368,7 @@
     }
     .ti.up { color: #22c55e; }
     .ti.dn { color: #ef4444; }
+    .ti.flat { color: var(--muted); }
     .ti.sym { color: var(--gold); }
     .ti.sep { color: var(--dim); }
     @keyframes tickRun { from { transform: translateX(0); } to { transform: translateX(-50%); } }
@@ -662,6 +679,9 @@
       .nav-links { display: none; }
       .nav-logo-mark { width: 34px; height: 34px; }
       #hero { padding: 0 24px 80px; }
+      .hero-content { grid-template-columns: 1fr; gap: 24px; }
+      .hero-logo-wrap { justify-content: flex-end; }
+      .hero-logo { width: min(62vw, 280px); }
       .hero-metrics { display: none; }
       .hero-actions { flex-direction: column; align-items: flex-start; }
       #about, .super-intro, .contact-inner { grid-template-columns: 1fr; gap: 50px; }
@@ -716,36 +736,40 @@
     </defs>
   </svg>
 
-  <div style="position:relative;z-index:2">
-    <img src="assets/daley-paulk-logo.png" alt="Daley and Paulk LLC logo" class="hero-logo" />
-    <div class="hero-eyebrow">Daley &amp; Paulk LLC — Est. Kansas City</div>
-    <h1>
-      <em>Financial Software</em><br/>
-      Built to Perform.
-    </h1>
-    <p class="hero-tagline">
-      Financial trading software is our main product, including forex and crypto API tooling. We also build custom apps and websites for operators who need reliable, production-ready software.
-    </p>
-    <p class="hero-proof">Financial Trading Software • Forex API • Crypto API • Apps &amp; Websites</p>
-    <div class="hero-bottom">
-      <div class="hero-actions">
-        <a href="#contact" class="btn-gold">Request Platform Demo</a>
-        <a href="#products" class="btn-outline">Compare Solutions</a>
+  <div class="hero-content">
+    <div class="hero-copy">
+      <div class="hero-eyebrow">Daley &amp; Paulk LLC — Est. Kansas City</div>
+      <h1>
+        <em>Financial Software</em><br/>
+        Built to Perform.
+      </h1>
+      <p class="hero-tagline">
+        We build professional financial software focused on automated trading performance, with custom app and web development services for firms that need dependable, production-ready systems.
+      </p>
+      <p class="hero-proof">Financial Trading Software • Prop Firm Automation • Apps &amp; Websites</p>
+      <div class="hero-bottom">
+        <div class="hero-actions">
+          <a href="#contact" class="btn-gold">Request Platform Demo</a>
+          <a href="#products" class="btn-outline">Compare Solutions</a>
+        </div>
+        <div class="hero-metrics">
+          <div class="hm">
+            <div class="hm-num">4</div>
+            <div class="hm-label">Core Services</div>
+          </div>
+          <div class="hm">
+            <div class="hm-num">KC</div>
+            <div class="hm-label">Kansas City Based</div>
+          </div>
+          <div class="hm">
+            <div class="hm-num">&lt;1d</div>
+            <div class="hm-label">Response Time</div>
+          </div>
+        </div>
       </div>
-      <div class="hero-metrics">
-        <div class="hm">
-          <div class="hm-num">6</div>
-          <div class="hm-label">Service Verticals</div>
-        </div>
-        <div class="hm">
-          <div class="hm-num">KC</div>
-          <div class="hm-label">Kansas City Based</div>
-        </div>
-        <div class="hm">
-          <div class="hm-num">&lt;1d</div>
-          <div class="hm-label">Response Time</div>
-        </div>
-      </div>
+    </div>
+    <div class="hero-logo-wrap">
+      <img src="assets/daley-paulk-logo.png" alt="Daley and Paulk LLC logo" class="hero-logo" />
     </div>
   </div>
 </section>
@@ -754,31 +778,31 @@
 <div class="services-bar">
   <div class="services-bar-inner">
     <div class="svc-item">
-      <div class="svc-icon">📱</div>
+      <div class="svc-icon">💻</div>
       <div class="svc-text">
-        <div class="svc-name">App Development</div>
-        <div class="svc-desc">Custom web &amp; mobile apps for businesses and traders</div>
+        <div class="svc-name">Software Development</div>
+        <div class="svc-desc">Custom software engineering for business and trading operations</div>
       </div>
     </div>
     <div class="svc-item">
-      <div class="svc-icon">🌐</div>
+      <div class="svc-icon">🏛️</div>
       <div class="svc-text">
-        <div class="svc-name">Website Development</div>
-        <div class="svc-desc">Professional, fast, SEO-ready sites built to convert</div>
+        <div class="svc-name">Automatic Prop Firm Trading</div>
+        <div class="svc-desc">Automated rule-aware systems built for funded trading workflows</div>
       </div>
     </div>
     <div class="svc-item">
       <div class="svc-icon">📈</div>
       <div class="svc-text">
-        <div class="svc-name">Forex Trading API</div>
-        <div class="svc-desc">Low-latency signal APIs for automated forex bot workflows</div>
+        <div class="svc-name">Automatic Trading Services</div>
+        <div class="svc-desc">Systematic, always-on automation infrastructure for strategy execution</div>
       </div>
     </div>
     <div class="svc-item">
-      <div class="svc-icon">₿</div>
+      <div class="svc-icon">👑</div>
       <div class="svc-text">
-        <div class="svc-name">Crypto Trading API</div>
-        <div class="svc-desc">Real-time crypto signals and execution automation tools</div>
+        <div class="svc-name">Solomonn (Flagship)</div>
+        <div class="svc-desc">Our flagship automatic trading service for qualified clients</div>
       </div>
     </div>
   </div>
@@ -787,25 +811,23 @@
 <!-- TICKER -->
 <div class="ticker">
   <div class="ticker-track">
-    <span class="ti sym">EURUSD</span><span class="ti up">▲ 1.0842</span><span class="ti sep">  ·  </span>
-    <span class="ti sym">GBPUSD</span><span class="ti dn">▼ 1.2731</span><span class="ti sep">  ·  </span>
-    <span class="ti sym">XAUUSD</span><span class="ti up">▲ 3,124.50</span><span class="ti sep">  ·  </span>
-    <span class="ti sym">XAGUSD</span><span class="ti up">▲ 34.82</span><span class="ti sep">  ·  </span>
-    <span class="ti sym">USOIL</span><span class="ti dn">▼ 78.14</span><span class="ti sep">  ·  </span>
-    <span class="ti sym">BTC/USD</span><span class="ti up">▲ 86,440</span><span class="ti sep">  ·  </span>
-    <span class="ti sym">ETH/USD</span><span class="ti up">▲ 3,210</span><span class="ti sep">  ·  </span>
-    <span class="ti sym">URA</span><span class="ti up">▲ 28.74</span><span class="ti sep">  ·  </span>
-    <span class="ti sym">USDJPY</span><span class="ti dn">▼ 149.62</span><span class="ti sep">  ·  </span>
+    <span class="ti sym">EURUSD</span><span class="ti up ti-price" data-symbol="EURUSD">▲ 1.0842</span><span class="ti sep">  ·  </span>
+    <span class="ti sym">GBPUSD</span><span class="ti dn ti-price" data-symbol="GBPUSD">▼ 1.2731</span><span class="ti sep">  ·  </span>
+    <span class="ti sym">USDJPY</span><span class="ti dn ti-price" data-symbol="USDJPY">▼ 149.62</span><span class="ti sep">  ·  </span>
+    <span class="ti sym">BTC/USD</span><span class="ti up ti-price" data-symbol="BTCUSD">▲ 86,440</span><span class="ti sep">  ·  </span>
+    <span class="ti sym">ETH/USD</span><span class="ti up ti-price" data-symbol="ETHUSD">▲ 3,210</span><span class="ti sep">  ·  </span>
+    <span class="ti sym">SOL/USD</span><span class="ti up ti-price" data-symbol="SOLUSD">▲ 184.20</span><span class="ti sep">  ·  </span>
+    <span class="ti sym">XAUUSD</span><span class="ti up ti-price" data-symbol="XAUUSD">▲ 3,124.50</span><span class="ti sep">  ·  </span>
+    <span class="ti sym">USOIL</span><span class="ti dn ti-price" data-symbol="USOIL">▼ 78.14</span><span class="ti sep">  ·  </span>
     <!-- repeat -->
-    <span class="ti sym">EURUSD</span><span class="ti up">▲ 1.0842</span><span class="ti sep">  ·  </span>
-    <span class="ti sym">GBPUSD</span><span class="ti dn">▼ 1.2731</span><span class="ti sep">  ·  </span>
-    <span class="ti sym">XAUUSD</span><span class="ti up">▲ 3,124.50</span><span class="ti sep">  ·  </span>
-    <span class="ti sym">XAGUSD</span><span class="ti up">▲ 34.82</span><span class="ti sep">  ·  </span>
-    <span class="ti sym">USOIL</span><span class="ti dn">▼ 78.14</span><span class="ti sep">  ·  </span>
-    <span class="ti sym">BTC/USD</span><span class="ti up">▲ 86,440</span><span class="ti sep">  ·  </span>
-    <span class="ti sym">ETH/USD</span><span class="ti up">▲ 3,210</span><span class="ti sep">  ·  </span>
-    <span class="ti sym">URA</span><span class="ti up">▲ 28.74</span><span class="ti sep">  ·  </span>
-    <span class="ti sym">USDJPY</span><span class="ti dn">▼ 149.62</span><span class="ti sep">  ·  </span>
+    <span class="ti sym">EURUSD</span><span class="ti up ti-price" data-symbol="EURUSD">▲ 1.0842</span><span class="ti sep">  ·  </span>
+    <span class="ti sym">GBPUSD</span><span class="ti dn ti-price" data-symbol="GBPUSD">▼ 1.2731</span><span class="ti sep">  ·  </span>
+    <span class="ti sym">USDJPY</span><span class="ti dn ti-price" data-symbol="USDJPY">▼ 149.62</span><span class="ti sep">  ·  </span>
+    <span class="ti sym">BTC/USD</span><span class="ti up ti-price" data-symbol="BTCUSD">▲ 86,440</span><span class="ti sep">  ·  </span>
+    <span class="ti sym">ETH/USD</span><span class="ti up ti-price" data-symbol="ETHUSD">▲ 3,210</span><span class="ti sep">  ·  </span>
+    <span class="ti sym">SOL/USD</span><span class="ti up ti-price" data-symbol="SOLUSD">▲ 184.20</span><span class="ti sep">  ·  </span>
+    <span class="ti sym">XAUUSD</span><span class="ti up ti-price" data-symbol="XAUUSD">▲ 3,124.50</span><span class="ti sep">  ·  </span>
+    <span class="ti sym">USOIL</span><span class="ti dn ti-price" data-symbol="USOIL">▼ 78.14</span><span class="ti sep">  ·  </span>
   </div>
 </div>
 
@@ -854,68 +876,43 @@
   <div class="products-head reveal">
     <div>
       <span class="label">Product Suite</span>
-      <h2 class="section-title">Six services.<br/><em>One team.</em></h2>
+      <h2 class="section-title">Focused products.<br/><em>One stack.</em></h2>
       <div class="gold-rule"></div>
     </div>
-    <p class="products-note">From custom app development and website builds to forex trading API integrations and crypto automation tools — we deliver software that works for your business or trading operation from day one.</p>
+    <p class="products-note">Our lineup is streamlined around software development and automated trading execution. Solomonn is our flagship automated trading service.</p>
   </div>
-  <div class="prod-group-header">Development Services</div>
   <div class="products-grid">
 
     <div class="prod-card reveal">
-      <span class="prod-tag">Custom Development</span>
-      <span class="prod-number">01 — App Development</span>
-      <h3 class="prod-name">Custom App<br/>Development</h3>
-      <p class="prod-desc">We build custom web and mobile applications for businesses and traders — from trading dashboards and client portals to workflow automation tools and internal platforms tailored to your exact needs.</p>
-      <a href="#contact" class="prod-link">Start Your Project</a>
+      <span class="prod-tag">Core Service</span>
+      <span class="prod-number">01 — Software Development</span>
+      <h3 class="prod-name">Software<br/>Development</h3>
+      <p class="prod-desc">Custom software engineering for web, app, and operational systems that support real business workflows and trading operations.</p>
+      <a href="#contact" class="prod-link">Start Project</a>
     </div>
 
     <div class="prod-card reveal" style="transition-delay:.1s">
-      <span class="prod-tag">Custom Development</span>
-      <span class="prod-number">02 — Website Development</span>
-      <h3 class="prod-name">Website<br/>Development</h3>
-      <p class="prod-desc">Professional website design and development for businesses that need more than a template. We build fast, conversion-focused sites that represent your brand and rank in search.</p>
-      <a href="#contact" class="prod-link">Start Your Project</a>
+      <span class="prod-tag">Automation</span>
+      <span class="prod-number">02 — Prop Firms</span>
+      <h3 class="prod-name">Automatic Prop Firm<br/>Trading</h3>
+      <p class="prod-desc">Automated trading systems built around funded-account rule sets, execution discipline, and monitoring for prop-firm style environments.</p>
+      <a href="#contact" class="prod-link">Request Access</a>
     </div>
 
-  </div>
-  <div class="prod-group-header" style="margin-top:32px">Trading API Software</div>
-  <div class="products-grid">
-
     <div class="prod-card reveal" style="transition-delay:.05s">
-      <span class="prod-tag">API Access</span>
-      <span class="prod-number">03 — Forex API</span>
-      <h3 class="prod-name">Forex Trading<br/>API Software</h3>
-      <p class="prod-desc">Access low-latency forex signals and execution-ready endpoints to power your own automated trading bot workflows, internal strategy tooling, and algorithmic forex systems.</p>
+      <span class="prod-tag">Automation</span>
+      <span class="prod-number">03 — Automatic Trading</span>
+      <h3 class="prod-name">Automatic Trading<br/>Services</h3>
+      <p class="prod-desc">Infrastructure and service support for systematic, always-on trading automation across your selected markets and strategy rules.</p>
       <a href="#contact" class="prod-link">Get Started</a>
     </div>
 
     <div class="prod-card reveal" style="transition-delay:.15s">
-      <span class="prod-tag">API Access</span>
-      <span class="prod-number">04 — Crypto API</span>
-      <h3 class="prod-name">Crypto Trading<br/>API Software</h3>
-      <p class="prod-desc">Integrate real-time crypto market signals and strategy logic into your stack for faster decision support, backtesting pipelines, and automated crypto execution rules.</p>
-      <a href="#contact" class="prod-link">Get Started</a>
-    </div>
-
-  </div>
-  <div class="prod-group-header" style="margin-top:32px">Additional Services</div>
-  <div class="products-grid">
-
-    <div class="prod-card reveal" style="transition-delay:.05s">
-      <span class="prod-tag">Core IP</span>
-      <span class="prod-number">05 — Prop Trading</span>
-      <h3 class="prod-name">Prop Trading<br/>Signal Generation</h3>
-      <p class="prod-desc">Our proprietary multi-strategy signal engine helps qualified teams build and deploy systematic workflows with configurable signals, filters, and execution constraints.</p>
-      <a href="#contact" class="prod-link">Inquire for Access</a>
-    </div>
-
-    <div class="prod-card reveal" style="transition-delay:.15s">
-      <span class="prod-tag">Software Service</span>
-      <span class="prod-number">06 — Credit</span>
-      <h3 class="prod-name">Credit Building<br/>Services</h3>
-      <p class="prod-desc">Software-guided credit optimization tools that track behaviors, surface action steps, and support stronger financial operations for users and operators.</p>
-      <a href="#contact" class="prod-link">Get Started</a>
+      <span class="prod-tag">Flagship</span>
+      <span class="prod-number">04 — Solomonn</span>
+      <h3 class="prod-name">Solomonn<br/>Automatic Trading</h3>
+      <p class="prod-desc">Our flagship automatic trading service for qualified clients who want a focused, managed software-driven automation product.</p>
+      <a href="#contact" class="prod-link">Inquire for Solomonn</a>
     </div>
 
   </div>
@@ -1114,13 +1111,10 @@
           <label>I'm Interested In</label>
           <select name="service" required>
             <option value="" disabled selected>Select a service</option>
-            <option>Custom App Development</option>
-            <option>Website Development</option>
-            <option>Forex Trading API Access</option>
-            <option>Crypto Trading API Access</option>
-            <option>Trading Bot Platform Walkthrough</option>
-            <option>Prop Trading Signal Generation</option>
-            <option>Credit Building Services</option>
+            <option>Software Development</option>
+            <option>Automatic Prop Firm Trading</option>
+            <option>Automatic Trading Services</option>
+            <option>Solomonn (Flagship)</option>
             <option>General Inquiry</option>
           </select>
         </div>
@@ -1140,7 +1134,7 @@
   <div class="footer-inner">
     <div class="footer-brand">
       <div class="footer-brand-name">Daley &amp; Paulk</div>
-      <div class="footer-brand-sub">LLC — Software &amp; Trading APIs</div>
+      <div class="footer-brand-sub">LLC — Financial Software</div>
     </div>
     <div class="footer-links">
       <a href="#about">About</a>
@@ -1167,6 +1161,113 @@
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
   }, { threshold: 0.07 });
   document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  // Ticker updates (free public endpoints where available)
+  const tickerState = {
+    EURUSD: 1.0842,
+    GBPUSD: 1.2731,
+    USDJPY: 149.62,
+    BTCUSD: 86440,
+    ETHUSD: 3210,
+    SOLUSD: 184.2,
+    XAUUSD: 3124.5,
+    USOIL: 78.14
+  };
+
+  const decimalsBySymbol = {
+    EURUSD: 4,
+    GBPUSD: 4,
+    USDJPY: 2,
+    BTCUSD: 0,
+    ETHUSD: 0,
+    SOLUSD: 2,
+    XAUUSD: 2,
+    USOIL: 2
+  };
+
+  const formatTickerPrice = (symbol, value) => {
+    const decimals = decimalsBySymbol[symbol] ?? 2;
+    return Number(value).toLocaleString(undefined, {
+      minimumFractionDigits: decimals,
+      maximumFractionDigits: decimals
+    });
+  };
+
+  const nudge = (value, pct = 0.006) => {
+    const delta = (Math.random() * 2 - 1) * pct * value;
+    return Math.max(0.0001, value + delta);
+  };
+
+  function setTickerPrice(symbol, nextValue) {
+    const prev = tickerState[symbol] ?? nextValue;
+    tickerState[symbol] = nextValue;
+    const direction = nextValue > prev ? 'up' : nextValue < prev ? 'dn' : 'flat';
+    const arrow = direction === 'up' ? '▲' : direction === 'dn' ? '▼' : '•';
+    document.querySelectorAll(`.ti-price[data-symbol="${symbol}"]`).forEach(el => {
+      el.classList.remove('up', 'dn', 'flat');
+      el.classList.add(direction);
+      el.textContent = `${arrow} ${formatTickerPrice(symbol, nextValue)}`;
+    });
+  }
+
+  async function updateTicker() {
+    // Always keep these moving, even if external feeds fail.
+    setTickerPrice('XAUUSD', nudge(tickerState.XAUUSD, 0.003));
+    setTickerPrice('USOIL', nudge(tickerState.USOIL, 0.004));
+
+    try {
+      const [fxRes, btcRes, ethRes, solRes] = await Promise.allSettled([
+        fetch('https://open.er-api.com/v6/latest/USD', { cache: 'no-store' }),
+        fetch('https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT', { cache: 'no-store' }),
+        fetch('https://api.binance.com/api/v3/ticker/price?symbol=ETHUSDT', { cache: 'no-store' }),
+        fetch('https://api.binance.com/api/v3/ticker/price?symbol=SOLUSDT', { cache: 'no-store' })
+      ]);
+
+      if (fxRes.status === 'fulfilled' && fxRes.value.ok) {
+        const fx = await fxRes.value.json();
+        if (fx?.rates?.EUR && fx?.rates?.GBP && fx?.rates?.JPY) {
+          setTickerPrice('EURUSD', 1 / fx.rates.EUR);
+          setTickerPrice('GBPUSD', 1 / fx.rates.GBP);
+          setTickerPrice('USDJPY', fx.rates.JPY);
+        }
+      } else {
+        setTickerPrice('EURUSD', nudge(tickerState.EURUSD, 0.002));
+        setTickerPrice('GBPUSD', nudge(tickerState.GBPUSD, 0.002));
+        setTickerPrice('USDJPY', nudge(tickerState.USDJPY, 0.002));
+      }
+
+      if (btcRes.status === 'fulfilled' && btcRes.value.ok) {
+        const btc = await btcRes.value.json();
+        if (btc?.price) setTickerPrice('BTCUSD', Number(btc.price));
+      } else {
+        setTickerPrice('BTCUSD', nudge(tickerState.BTCUSD, 0.01));
+      }
+
+      if (ethRes.status === 'fulfilled' && ethRes.value.ok) {
+        const eth = await ethRes.value.json();
+        if (eth?.price) setTickerPrice('ETHUSD', Number(eth.price));
+      } else {
+        setTickerPrice('ETHUSD', nudge(tickerState.ETHUSD, 0.012));
+      }
+
+      if (solRes.status === 'fulfilled' && solRes.value.ok) {
+        const sol = await solRes.value.json();
+        if (sol?.price) setTickerPrice('SOLUSD', Number(sol.price));
+      } else {
+        setTickerPrice('SOLUSD', nudge(tickerState.SOLUSD, 0.014));
+      }
+    } catch {
+      setTickerPrice('EURUSD', nudge(tickerState.EURUSD, 0.002));
+      setTickerPrice('GBPUSD', nudge(tickerState.GBPUSD, 0.002));
+      setTickerPrice('USDJPY', nudge(tickerState.USDJPY, 0.002));
+      setTickerPrice('BTCUSD', nudge(tickerState.BTCUSD, 0.01));
+      setTickerPrice('ETHUSD', nudge(tickerState.ETHUSD, 0.012));
+      setTickerPrice('SOLUSD', nudge(tickerState.SOLUSD, 0.014));
+    }
+  }
+
+  updateTicker();
+  setInterval(updateTicker, 30000);
 
   // Form submit — sends to contact@daleypaulk.com via Web3Forms
   async function handleSubmit(e) {
