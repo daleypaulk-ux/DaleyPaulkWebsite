@@ -349,16 +349,22 @@
     /* ─── TICKER ─── */
     .ticker {
       border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
-      background: var(--bg2); overflow: hidden; padding: 12px 0; position: relative; z-index: 2;
+      background: rgba(12,15,21,0.72);
+      backdrop-filter: blur(4px);
+      overflow: hidden;
+      padding: 8px 0;
+      position: relative;
+      z-index: 2;
     }
     .ticker-track {
       display: inline-flex; gap: 0;
-      animation: tickRun 28s linear infinite; white-space: nowrap;
+      animation: tickRun 34s linear infinite; white-space: nowrap;
     }
     .ti {
-      display: inline-block; padding: 0 32px;
-      font-size: .68rem; letter-spacing: .18em; text-transform: uppercase;
+      display: inline-block; padding: 0 24px;
+      font-size: .62rem; letter-spacing: .14em; text-transform: uppercase;
       font-family: 'DM Serif Display', serif;
+      opacity: .92;
     }
     .ti.up { color: #22c55e; }
     .ti.dn { color: #ef4444; }
@@ -764,6 +770,29 @@
   </div>
 </section>
 
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span class="ti sym">EURUSD</span><span class="ti up ti-price" data-symbol="EURUSD">▲ 1.0842</span><span class="ti sep">  ·  </span>
+    <span class="ti sym">GBPUSD</span><span class="ti dn ti-price" data-symbol="GBPUSD">▼ 1.2731</span><span class="ti sep">  ·  </span>
+    <span class="ti sym">USDJPY</span><span class="ti dn ti-price" data-symbol="USDJPY">▼ 149.62</span><span class="ti sep">  ·  </span>
+    <span class="ti sym">BTC/USD</span><span class="ti up ti-price" data-symbol="BTCUSD">▲ 86,440</span><span class="ti sep">  ·  </span>
+    <span class="ti sym">ETH/USD</span><span class="ti up ti-price" data-symbol="ETHUSD">▲ 3,210</span><span class="ti sep">  ·  </span>
+    <span class="ti sym">SOL/USD</span><span class="ti up ti-price" data-symbol="SOLUSD">▲ 184.20</span><span class="ti sep">  ·  </span>
+    <span class="ti sym">XAUUSD</span><span class="ti up ti-price" data-symbol="XAUUSD">▲ 3,124.50</span><span class="ti sep">  ·  </span>
+    <span class="ti sym">USOIL</span><span class="ti dn ti-price" data-symbol="USOIL">▼ 78.14</span><span class="ti sep">  ·  </span>
+    <!-- repeat -->
+    <span class="ti sym">EURUSD</span><span class="ti up ti-price" data-symbol="EURUSD">▲ 1.0842</span><span class="ti sep">  ·  </span>
+    <span class="ti sym">GBPUSD</span><span class="ti dn ti-price" data-symbol="GBPUSD">▼ 1.2731</span><span class="ti sep">  ·  </span>
+    <span class="ti sym">USDJPY</span><span class="ti dn ti-price" data-symbol="USDJPY">▼ 149.62</span><span class="ti sep">  ·  </span>
+    <span class="ti sym">BTC/USD</span><span class="ti up ti-price" data-symbol="BTCUSD">▲ 86,440</span><span class="ti sep">  ·  </span>
+    <span class="ti sym">ETH/USD</span><span class="ti up ti-price" data-symbol="ETHUSD">▲ 3,210</span><span class="ti sep">  ·  </span>
+    <span class="ti sym">SOL/USD</span><span class="ti up ti-price" data-symbol="SOLUSD">▲ 184.20</span><span class="ti sep">  ·  </span>
+    <span class="ti sym">XAUUSD</span><span class="ti up ti-price" data-symbol="XAUUSD">▲ 3,124.50</span><span class="ti sep">  ·  </span>
+    <span class="ti sym">USOIL</span><span class="ti dn ti-price" data-symbol="USOIL">▼ 78.14</span><span class="ti sep">  ·  </span>
+  </div>
+</div>
+
 <!-- SERVICES BAR -->
 <div class="services-bar">
   <div class="services-bar-inner">
@@ -795,29 +824,6 @@
         <div class="svc-desc">Custom software engineering for business and trading operations</div>
       </div>
     </div>
-  </div>
-</div>
-
-<!-- TICKER -->
-<div class="ticker">
-  <div class="ticker-track">
-    <span class="ti sym">EURUSD</span><span class="ti up ti-price" data-symbol="EURUSD">▲ 1.0842</span><span class="ti sep">  ·  </span>
-    <span class="ti sym">GBPUSD</span><span class="ti dn ti-price" data-symbol="GBPUSD">▼ 1.2731</span><span class="ti sep">  ·  </span>
-    <span class="ti sym">USDJPY</span><span class="ti dn ti-price" data-symbol="USDJPY">▼ 149.62</span><span class="ti sep">  ·  </span>
-    <span class="ti sym">BTC/USD</span><span class="ti up ti-price" data-symbol="BTCUSD">▲ 86,440</span><span class="ti sep">  ·  </span>
-    <span class="ti sym">ETH/USD</span><span class="ti up ti-price" data-symbol="ETHUSD">▲ 3,210</span><span class="ti sep">  ·  </span>
-    <span class="ti sym">SOL/USD</span><span class="ti up ti-price" data-symbol="SOLUSD">▲ 184.20</span><span class="ti sep">  ·  </span>
-    <span class="ti sym">XAUUSD</span><span class="ti up ti-price" data-symbol="XAUUSD">▲ 3,124.50</span><span class="ti sep">  ·  </span>
-    <span class="ti sym">USOIL</span><span class="ti dn ti-price" data-symbol="USOIL">▼ 78.14</span><span class="ti sep">  ·  </span>
-    <!-- repeat -->
-    <span class="ti sym">EURUSD</span><span class="ti up ti-price" data-symbol="EURUSD">▲ 1.0842</span><span class="ti sep">  ·  </span>
-    <span class="ti sym">GBPUSD</span><span class="ti dn ti-price" data-symbol="GBPUSD">▼ 1.2731</span><span class="ti sep">  ·  </span>
-    <span class="ti sym">USDJPY</span><span class="ti dn ti-price" data-symbol="USDJPY">▼ 149.62</span><span class="ti sep">  ·  </span>
-    <span class="ti sym">BTC/USD</span><span class="ti up ti-price" data-symbol="BTCUSD">▲ 86,440</span><span class="ti sep">  ·  </span>
-    <span class="ti sym">ETH/USD</span><span class="ti up ti-price" data-symbol="ETHUSD">▲ 3,210</span><span class="ti sep">  ·  </span>
-    <span class="ti sym">SOL/USD</span><span class="ti up ti-price" data-symbol="SOLUSD">▲ 184.20</span><span class="ti sep">  ·  </span>
-    <span class="ti sym">XAUUSD</span><span class="ti up ti-price" data-symbol="XAUUSD">▲ 3,124.50</span><span class="ti sep">  ·  </span>
-    <span class="ti sym">USOIL</span><span class="ti dn ti-price" data-symbol="USOIL">▼ 78.14</span><span class="ti sep">  ·  </span>
   </div>
 </div>
 
@@ -1206,11 +1212,9 @@
     setTickerPrice('USOIL', nudge(tickerState.USOIL, 0.004));
 
     try {
-      const [fxRes, btcRes, ethRes, solRes] = await Promise.allSettled([
+      const [fxRes, cryptoRes] = await Promise.allSettled([
         fetch('https://open.er-api.com/v6/latest/USD', { cache: 'no-store' }),
-        fetch('https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT', { cache: 'no-store' }),
-        fetch('https://api.binance.com/api/v3/ticker/price?symbol=ETHUSDT', { cache: 'no-store' }),
-        fetch('https://api.binance.com/api/v3/ticker/price?symbol=SOLUSDT', { cache: 'no-store' })
+        fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,solana&vs_currencies=usd', { cache: 'no-store' })
       ]);
 
       if (fxRes.status === 'fulfilled' && fxRes.value.ok) {
@@ -1226,24 +1230,14 @@
         setTickerPrice('USDJPY', nudge(tickerState.USDJPY, 0.002));
       }
 
-      if (btcRes.status === 'fulfilled' && btcRes.value.ok) {
-        const btc = await btcRes.value.json();
-        if (btc?.price) setTickerPrice('BTCUSD', Number(btc.price));
+      if (cryptoRes.status === 'fulfilled' && cryptoRes.value.ok) {
+        const crypto = await cryptoRes.value.json();
+        if (crypto?.bitcoin?.usd) setTickerPrice('BTCUSD', Number(crypto.bitcoin.usd));
+        if (crypto?.ethereum?.usd) setTickerPrice('ETHUSD', Number(crypto.ethereum.usd));
+        if (crypto?.solana?.usd) setTickerPrice('SOLUSD', Number(crypto.solana.usd));
       } else {
         setTickerPrice('BTCUSD', nudge(tickerState.BTCUSD, 0.01));
-      }
-
-      if (ethRes.status === 'fulfilled' && ethRes.value.ok) {
-        const eth = await ethRes.value.json();
-        if (eth?.price) setTickerPrice('ETHUSD', Number(eth.price));
-      } else {
         setTickerPrice('ETHUSD', nudge(tickerState.ETHUSD, 0.012));
-      }
-
-      if (solRes.status === 'fulfilled' && solRes.value.ok) {
-        const sol = await solRes.value.json();
-        if (sol?.price) setTickerPrice('SOLUSD', Number(sol.price));
-      } else {
         setTickerPrice('SOLUSD', nudge(tickerState.SOLUSD, 0.014));
       }
     } catch {
