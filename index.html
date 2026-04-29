@@ -413,6 +413,12 @@
 
     .reveal { opacity: 0; transform: translateY(20px); transition: opacity .75s ease, transform .75s ease; }
     .reveal.in { opacity: 1; transform: translateY(0); }
+    .scroll-fade-target {
+      opacity: .72;
+      transform: translateY(10px);
+      transition: opacity .22s linear, transform .22s ease-out;
+      will-change: opacity, transform;
+    }
 
     /* ─── ABOUT ─── */
     #about {
@@ -1240,6 +1246,48 @@
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
   }, { threshold: 0.07 });
   document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  // Subtle text fade on scroll (post-hero sections)
+  const scrollFadeTargets = document.querySelectorAll(
+    '#about .section-title, #about .body-copy, #products .section-title, #products .products-note, #supercycle .section-title, #supercycle .super-intro-right p, #faq .section-title, #faq .faq-q, #faq .faq-a, #contact .section-title, #contact .body-copy'
+  );
+
+  scrollFadeTargets.forEach(el => el.classList.add('scroll-fade-target'));
+
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function updateScrollFade() {
+    if (prefersReducedMotion) {
+      scrollFadeTargets.forEach(el => {
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0)';
+      });
+      return;
+    }
+
+    const vh = window.innerHeight || 1;
+    scrollFadeTargets.forEach(el => {
+      const rect = el.getBoundingClientRect();
+      const t = Math.max(0, Math.min(1, (vh * 0.9 - rect.top) / (vh * 0.7)));
+      const opacity = 0.68 + t * 0.32;
+      const y = (1 - t) * 10;
+      el.style.opacity = opacity.toFixed(3);
+      el.style.transform = `translateY(${y.toFixed(2)}px)`;
+    });
+  }
+
+  let scrollFadeRaf = null;
+  const requestScrollFadeUpdate = () => {
+    if (scrollFadeRaf) return;
+    scrollFadeRaf = requestAnimationFrame(() => {
+      updateScrollFade();
+      scrollFadeRaf = null;
+    });
+  };
+
+  updateScrollFade();
+  window.addEventListener('scroll', requestScrollFadeUpdate, { passive: true });
+  window.addEventListener('resize', requestScrollFadeUpdate);
 
   // Ticker updates (free public endpoints where available)
   const tickerState = {
